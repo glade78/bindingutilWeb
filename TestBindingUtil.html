@@ -1,0 +1,133 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Binding Test</title>
+
+
+
+
+    <style type="text/css">
+    </style>
+
+</head>
+
+<body>
+<br>
+Binding Util provides One-way and Two-way binding with Just single statement.
+<br>
+1) HTML Element to Html Element
+<br>
+2) HTML Element to JavaScript Object
+<br>
+3) JavaScript Object to JavaScript Object
+<br>
+<br>
+<br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th></th>
+                <th>HTML Controls</th>
+                <th>Bindable Object Value</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Test Input Values</td>
+                <td style="width: 477px;">
+                    <br>
+                     Following element demonstrates chain binding
+                     Input Element binds to Model Object binds
+                     Model Object binds to Label Element
+                    <br>
+                    <br>
+                    <input id="inputtxt_1" type="text" value="test">
+                    <br>
+                    <br>
+                    Initially clicking BindInputText will show Model value by calling myCustomModel.getValue() , which is set to 10.
+                    <br>
+                    <br>
+                    <input type="button" value="BindInputText" onclick="bindInputTextBox()">
+                    <br>
+                    <input type="button" value="removeBindInputText" onclick="removeBindInputTextBox()">
+                </td>
+                <td>
+                    <input type="text" id="lbl_1" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>Test Input Values</td>
+                <td style="width: 477px;">
+                    <br>
+                    Following element demonstrate twoway binding
+                    Input Element binds to Label Element
+                    <br>
+                    <br>
+                    <input id="inputtxt_11" type="text" value="test">
+                    <br>
+                    <input type="button" value="Bind Twoway InputText" onclick="bindTwowayInputTextBox()">
+                    <br>
+                    <input type="button" value="removeBind TwoWay InputText" onclick="removeBindTwowayInputTextBox()">
+                </td>
+                <td>
+                    <input type="text" id="lbl_11" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>Test Password Values</td>
+                <td style="width: 477px;">
+                    <input id="pwd_2" type="password" value="test">
+                    <br>
+                    <input type="button" value="BindInputText" onclick="bindPasswordTextBox()">
+
+                </td>
+                <td>
+                    <input type="text" id="lbl_2" value="">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Test CheckBox Values</td>
+                <td style="width: 477px;">
+                    <input id="chk_3" type="checkbox" value="check">
+                    <br>
+                    <input type="button" value="BindInputText" onclick="bindCheckBoxTextBox()">
+
+                </td>
+                <td>
+                    <input type="text" id="lbl_3" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>Test Selection Values</td>
+                <td style="width: 477px;">
+                    <select id="mySelect">
+                        <option value="Audi">Audi
+                        <option value="BMW">BMW
+                        <option value="Mercedes">Mercedes
+                        <option value="Volvo">Volvo
+                    </select>
+                    <br>
+                    <input type="button" value="BindInputText" onclick="bindSelectionBox()">
+
+                </td>
+                <td>
+                    <input type="text" id="lbl_4" value="">
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <div id="htmlfragments"></div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js" type="text/javascript"></script>
+     <script src="BindingUtils.js" type="text/javascript"></script>
+    <script src="testbindingutil.js" type="text/javascript"></script>
+
+
+</body>
