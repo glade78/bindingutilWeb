@@ -16,6 +16,8 @@ Provides One-way and Two-way Binding different ways as follows :
 7. Support addBinding and RemoveBinding
 8. Support Eventbased binding trigger easy to cleanup
 9. Prevent Memory Leak
+10. Can be use with all popular javascript frameworks.
+11. Provides more control for binding javascript object and HTML Elements
 
 ## Dependency 
 CreateJS, Jquery
