@@ -48,22 +48,14 @@ this.plainjs = this.plainjs||{};
         var srcPropStr = _srcProp+"prop";
         var srcObjKey = null;
         if(_srcObj.nodeName) {
-            var eleid = _srcObj.id;
-            srcObjKey = eleid;
-            if (BindObjDictionary[srcObjKey] == null) {
-                BindObjDictionary[srcObjKey] = _srcObj;
-            }
-            $(_srcObj).on(_evtname, synchronise);
+            srcObjKey = _srcObj.id;
+            addToBindDictionary(srcObjKey,_srcObj,_evtname);
             srcObject = BindObjDictionary[srcObjKey];
         }else{
             srcObjKey = _srcObj;
-            if (BindObjDictionary[srcObjKey] == null) {
-                BindObjDictionary[srcObjKey] = _srcObj;
-            }
-            $(_srcObj).on(_evtname, synchronise);
+            addToBindDictionary(srcObjKey,_srcObj,_evtname);
             srcObject = BindObjDictionary[srcObjKey];
         }
-
 
         if(srcObject.srcPropArray == null){
             srcObject.srcPropArray = [];
@@ -84,6 +76,14 @@ this.plainjs = this.plainjs||{};
         var targetObject = getTargetObject(_targObj,_targProp);
         srcObject[srcPropStr].bindObjArray.push(targetObject);
         BindObjDictionary[srcObjKey]  = srcObject;
+    }
+
+    function addToBindDictionary(key,Obj,_evtname){
+        if (BindObjDictionary[key] == null) {
+            BindObjDictionary[key] = Obj;
+        }
+        $(Obj).on(_evtname, synchronise);
+
     }
 
     function synchronise(event){
@@ -158,20 +158,22 @@ this.plainjs = this.plainjs||{};
     p.removeBinding = function (srcObj,evtname){
         // determine is it dom element or plain object
         var srcObject;
-        var srcPropStr = srcProp+"prop";
         if(srcObj == null)
             return;
         if(srcObj.nodeName) {
             var eleid = srcObj.id;
             if (BindObjDictionary[eleid] != null) {
                 srcObject =  BindObjDictionary[eleid] ;
-                srcObject.removeEventListener(evtname,synchronise);
+                removeListeners(srcObject);
+            }else{
+                srcObject = BindObjDictionary[srcObj];
+                removeListeners(srcObject);
             }
 
         }else{
             if (BindObjDictionary[srcObj] != null) {
                 srcObject = BindObjDictionary[srcObj];
-                srcObject.removeEventListener(evtname,synchronise);
+                removeListeners(srcObject);
             }
         }
 
@@ -184,6 +186,10 @@ this.plainjs = this.plainjs||{};
                 srcObject[srcPropStr].bindObjArray = [];
             }
         }
+    }
+
+    function removeListeners(sourceObj,evtname){
+        sourceObj.removeEventListener(evtname,synchronise);
     }
 
     plainjs.BindingUtil = BindingUtil;
